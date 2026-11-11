@@ -56,6 +56,17 @@ public class CarTest {
         boolean result = (currentSpeed == speedWithNegativeGas) && (currentSpeed == speedWithPositiveGas);
         reportResult("Invalid argunemt for brake() does not change speed", result);
     }
+    private static void testCurrentSpeedInterval() {
+        Volvo240 testCar = new Volvo240();
+        double enginePower = testCar.getEnginePower();
+        testCar.incrementSpeed(enginePower*100);
+        double topSpeed = testCar.getCurrentSpeed();
+        testCar.decrementSpeed(enginePower*-1);
+        double minSpeed = testCar.getCurrentSpeed();
+
+        boolean result = (minSpeed == 0) && (topSpeed == enginePower);
+        reportResult("Current speed is between 0 and engine power", result);
+    }
     static void main(){
         testTurbo(); // result True
         testSaabTurboVsVolvo(); // result False
@@ -63,6 +74,7 @@ public class CarTest {
         testDoors(); // result True
         testGasArgument();
         testBreakArgument();
+        testCurrentSpeedInterval();
         // TODO: add and run more tests
     }
 }
