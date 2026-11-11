@@ -59,9 +59,9 @@ public class CarTest {
     private static void testCurrentSpeedInterval() {
         Volvo240 testCar = new Volvo240();
         double enginePower = testCar.getEnginePower();
-        testCar.incrementSpeed(enginePower*100);
+        testCar.incrementSpeed(enginePower*10000);
         double topSpeed = testCar.getCurrentSpeed();
-        testCar.decrementSpeed(enginePower*-1);
+        testCar.decrementSpeed(enginePower*10000);
         double minSpeed = testCar.getCurrentSpeed();
 
         boolean result = (minSpeed == 0) && (topSpeed == enginePower);
