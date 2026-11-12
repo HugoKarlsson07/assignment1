@@ -59,19 +59,17 @@ public abstract class Car implements Movable {
             currentSpeed = speed;
         }
     }
-    public void incrementSpeed(double amount) {
-        double newSpeed = getCurrentSpeed() + speedFactor() * amount;
-        setCurrentSpeed(newSpeed);
-    }
-    public void decrementSpeed(double amount) {
-        double newSpeed = getCurrentSpeed() - speedFactor() * amount;
-        setCurrentSpeed(newSpeed);
-    }
     public void gas(double amount){
-        if (amount >= 0 && amount <= 1) {incrementSpeed((amount));}
+        if (amount >= 0 && amount <= 1) {
+            double newSpeed = getCurrentSpeed() + speedFactor() * amount;
+            setCurrentSpeed(newSpeed);
+        }
     }
     public void brake(double amount) {
-        if (amount >= 0 && amount <=1){decrementSpeed((amount));};
+        if (amount >= 0 && amount <=1){
+            double newSpeed = getCurrentSpeed() - speedFactor() * amount;
+            setCurrentSpeed(newSpeed);
+        };
     }
 
     // Movable implementation
