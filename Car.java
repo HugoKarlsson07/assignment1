@@ -50,18 +50,26 @@ public abstract class Car implements Movable {
     //abstract method that is unique for evry sub-klass of car, because it's calculated using different math, since Saab has turbo
     public abstract double speedFactor();
 
-    public void incrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
-    }
-
-    public void decrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+    private void setCurrentSpeed(double speed) {
+        if (speed < 0) {
+            currentSpeed = 0;
+        } else if (speed > enginePower) {
+            currentSpeed = enginePower;
+        } else {
+            currentSpeed = speed;
+        }
     }
     public void gas(double amount){
-        if (amount >= 0 && amount <= 1) {incrementSpeed((amount));}
+        if (amount >= 0 && amount <= 1) {
+            double newSpeed = getCurrentSpeed() + speedFactor() * amount;
+            setCurrentSpeed(newSpeed);
         }
+    }
     public void brake(double amount) {
-        if (amount >= 0 && amount <=1){decrementSpeed((amount));};
+        if (amount >= 0 && amount <=1){
+            double newSpeed = getCurrentSpeed() - speedFactor() * amount;
+            setCurrentSpeed(newSpeed);
+        };
     }
 
     // Movable implementation
