@@ -15,20 +15,20 @@ public class CarTest {
     }
 
     private static void testSaabTurboVsVolvo(){
-        Saab95 fastSaab = new Saab95();
+        Saab95 slowSaab = new Saab95();
         Volvo240 volvo = new Volvo240();
-        fastSaab.setTurboOn();
-        fastSaab.gas(1);
+        slowSaab.setTurboOff();
+        slowSaab.gas(1);
         volvo.gas(1);
-        boolean result = fastSaab.getCurrentSpeed() < volvo.getCurrentSpeed();
-        reportResult("volvo is faster than Saab with no turbo", result);
+        boolean result = slowSaab.getCurrentSpeed() == volvo.getCurrentSpeed();
+        reportResult("Volvo is as fast as Saab with no turbo", result);
     }
 
     private  static void testSameColor(){
         Saab95 Saab = new Saab95();
         Volvo240 volvo = new Volvo240();
         boolean result = volvo.getColor() == Saab.getColor();
-        reportResult("volvo is same color as Saab", result);
+        reportResult("Volvo is same color as Saab", result);
     }
     private static void testDoors(){
         Saab95 Saab = new Saab95();
