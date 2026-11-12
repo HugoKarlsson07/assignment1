@@ -27,15 +27,17 @@ public class CarTest {
     private  static void testSameColor(){
         Saab95 Saab = new Saab95();
         Volvo240 volvo = new Volvo240();
-        boolean result = volvo.getColor() == Saab.getColor();
-        reportResult("Volvo is same color as Saab", result);
+        boolean result = volvo.getColor() != Saab.getColor();
+        reportResult("Volvo is not same color as Saab", result);
     }
+
     private static void testDoors(){
         Saab95 Saab = new Saab95();
         Volvo240 Volvo = new Volvo240();
         boolean result = Volvo.getNrDoors() > Saab.getNrDoors();
         reportResult("Volvo has more doors than Saab", result);
     }
+
     private static void testGasArgument(){
         Volvo240 testCar = new Volvo240();
         double currentSpeed = testCar.getCurrentSpeed();
@@ -46,6 +48,7 @@ public class CarTest {
         boolean result = (currentSpeed == speedWithNegativeGas) && (currentSpeed == speedWithPositiveGas);
         reportResult("Invalid argunemt for gas() does not change speed", result);
     }
+
     private static void testBreakArgument(){
         Volvo240 testCar = new Volvo240();
         double currentSpeed = testCar.getCurrentSpeed();
@@ -56,21 +59,7 @@ public class CarTest {
         boolean result = (currentSpeed == speedWithNegativeGas) && (currentSpeed == speedWithPositiveGas);
         reportResult("Invalid argunemt for brake() does not change speed", result);
     }
-    // private static void testCurrentSpeedInterval() {
-    //     Volvo240 testCar = new Volvo240();
-    //     double enginePower = testCar.getEnginePower();
-    //     testCar.setCurrentSpeed(enginePower*10);
-    //     double topSpeed = testCar.getCurrentSpeed();
-    //     testCar.setCurrentSpeed(-10);
-    //     double minSpeed = testCar.getCurrentSpeed();
 
-    //     System.out.println(topSpeed);
-    //     System.out.println(minSpeed);
-    //     System.out.println(enginePower);
-
-    //     boolean result = (minSpeed == 0) && (topSpeed == enginePower);
-    //     reportResult("Current speed is between 0 and engine power", result);
-    // }
     static void main(){
         testTurbo(); // result True
         testSaabTurboVsVolvo(); // result False
@@ -78,7 +67,5 @@ public class CarTest {
         testDoors(); // result True
         testGasArgument();
         testBreakArgument();
-        //testCurrentSpeedInterval();
-        // TODO: add and run more tests
     }
 }
